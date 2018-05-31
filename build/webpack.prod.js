@@ -2,14 +2,14 @@ const merge = require('webpack-merge')
 const base = require('./webpack.base')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 
 module.exports = merge(base, {
-  entry: {
-   vendor: ['react','react-dom']
-  },
+  // entry: {
+  //  vendor: ['react','react-dom']
+  // },
   dependencies: ['./lib/vendor.js'],
   devtool: 'source-map',
   module: {
@@ -23,24 +23,32 @@ module.exports = merge(base, {
   },
   plugins: [
     new ExtractTextWebpackPlugin('styles.css'),
-    new CleanWebpackPlugin(['../dist']),
+    // new CleanWebpackPlugin(['../dist']),
     new CleanWebpackPlugin(
-      ['dist'],
+      ['dist'], // 匹配删除的文件
       {
-        root: path.join(__dirname, '..'),
-        verbose: true,
-        dry: false 
+        root: path.join(__dirname, '..'), // 根目录
+        verbose: true, // 开启在控制台输出信息
+        dry: false // 启用删除文件
       }
     ),
-    new UglifyjsWebpackPlugin({sourceMap: false}),
+    // new UglifyjsWebpackPlugin({sourceMap: false}),
     new webpack
       .optimize
       .CommonsChunkPlugin({name: 'common', filename: 'common.js'}),
+    // new webpack
+    //   .optimize
+    //   .CommonsChunkPlugin({
+    //     name: ['vendor','common'],
+    //     // filename: 'vendor.js' (给 chunk 一个不同的名字)
+    //     minChunks: Infinity,
+    //     // (随着 entry chunk 越来越多， 这个配置保证没其它的模块会打包进 vendor chunk)
+    //   })
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, '../lib/manifest.json')
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 })
