@@ -21,7 +21,7 @@ module.exports = {
           /node_modules/, /build/, resolve('src/router/')
         ],
         loader: 'eslint-loader',
-        enforce: 'pre',
+        enforce: 'pre', // 编译之前
         include: [
           resolve('src'), resolve('test')
         ],
@@ -50,8 +50,8 @@ module.exports = {
                 'regenerator': true,
                 'moduleName': '@babel/runtime'
               }],
-              ['transform-react-remove-prop-types'],
-              ['@babel/plugin-proposal-object-rest-spread']
+              ['transform-react-remove-prop-types'], // 生产环境删除 prop-types
+              ['@babel/plugin-proposal-object-rest-spread'] // 支持 {...}
             ]
           }
         },
