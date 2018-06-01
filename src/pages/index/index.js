@@ -18,6 +18,7 @@ class Index extends Component {
   }
   render () {
     return (
+<<<<<<< HEAD
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
           collapsible
@@ -53,6 +54,20 @@ class Index extends Component {
               <Icon type='file' />
               <span>File</span>
             </Menu.Item>
+=======
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="2">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+>>>>>>> dc81def7b28e4d48cf9a16ef7dd3675afaa0f6fb
           </Menu>
         </Sider>
         <Layout>

@@ -82,4 +82,9 @@ module.exports = {
     ]
   },
   plugins: [new HTMLWebpackPlugin({template: 'index.html', filename: 'index.html', inject: 'body'})],
+  resolve: {
+    alias: {
+      Component: path.join(__dirname, '..', 'src/components/')
+    }
+  }
 }
