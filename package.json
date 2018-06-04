@@ -37,7 +37,7 @@
     "gh-pages": "^1.1.0",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^2.30.1",
-    "less": "^3.0.1",
+    "less": "^2.7.2",
     "less-loader": "^4.0.6",
     "node-loader": "^0.6.0",
     "node-sass": "^4.7.2",
@@ -55,8 +55,11 @@
   },
   "dependencies": {
     "antd": "^3.2.3",
+    "autoprefixer": "^8.6.0",
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-loader": "^2.1.5",
     "react": "^16.2.0",
     "react-addons-perf": "^15.4.2",
     "react-dom": "^16.2.0",
@@ -75,8 +78,5 @@
       "lib/*.js",
       "src/router/index.js"
     ]
-  },
-  "theme": {
-    "primary-color": "#1DA57A"
   }
 }
